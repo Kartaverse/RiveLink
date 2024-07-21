@@ -1,0 +1,12 @@
+<!-- docs/_sidebar.md -->
+- [Home](/)
+- **Links**
+  - [Kartaverse](https://github.com/kartaverse)
+  - [Medium Blog](https://medium.com/@andrewhazelden)
+  - [Google Group](https://groups.google.com/g/kartaverse/)
+  - [Facebook Group](https://www.facebook.com/groups/kartavr)
+  - [Reactor Docs](https://kartaverse.github.io/Reactor-Docs/#/reactor)
+- **Contact**
+  - [Email](mailto:andrew@andrewhazelden.com)
+  - [GitHub](https://github.com/AndrewHazelden)
+  - [LinkedIn](https://www.linkedin.com/in/andrewhazelden/)
