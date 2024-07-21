@@ -16,6 +16,15 @@ Using the toolset is as easy as adding a RiveLink node to your comp. With only t
 
 ![RiveLink Nodes](Images/rivelink-screenshot.png)
 
----
 
 The RiveLink node is implemented as a cross-platform compatible fuse node that uses LuaJIJT [FFI linking](https://luajit.org/ext_ffi.html) to communicate bi-directionally with the official [rive-cpp](https://github.com/rive-app/rive-cpp) library.</p>
+
+___
+
+## RiveLink Installation
+
+The completed version of RiveLink will be delivered using the [Reactor Package Manager](https://kartaverse.github.io/Reactor-Docs/#/reactor) for Resolve/Fusion.
+
+Installation is as easy as selecting the "Kartaverse/KartaLink" category on the left sidebar. Then click on the install checkbox next to the name of the "RiveLink" atom package.
+
+![Reactor](Images/reactor.png)
