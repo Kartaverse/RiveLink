@@ -4,7 +4,7 @@ If want to do exotic things with your RiveLink node graphs, one of the most powe
 
 One of the many features of Vonk Ultra it that it gives you access to modifier nodes that peform temporal retiming of number datatypes. This number data can be sourced from keyframe animation curves, or a static value in the Inspector panel.
 
-![Retiming Nodes](images/rivelink-retime.png)
+![Retiming Nodes](Images/rivelink-retime.png)
 
 > The most frequently used Vonk "vNumber" based node is called `vNumberCompReqTime`. It works with number based dataype connections in the node graph and Inspector window. 
 
