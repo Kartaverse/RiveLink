@@ -1,0 +1,57 @@
+{
+	Tools = ordered() {
+		RiveTitle001 = GroupOperator {
+			CtrlWZoom = false,
+			NameSet = true,
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "PipeRouter3",
+					Source = "Input",
+				}
+			},
+			Outputs = {
+				Output1 = InstanceOutput {
+					SourceOp = "kvrRiveLink1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 165, 16.5 },
+				Flags = {
+					AllowPan = false,
+					AutoSnap = true
+				},
+				Size = { 219.875, 98.0606, 109.938, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { -155.167, -8.24242 }
+			},
+			Tools = ordered() {
+				vNumberCompReqTime1 = Fuse.vNumberCompReqTime {
+					ViewInfo = OperatorInfo { Pos = { 100.167, 15.4015 } },
+					Colors = { TileColor = { R = 0.266666666666667, G = 0.56078431372549, B = 0.396078431372549 }, }
+				},
+				PipeRouter3 = PipeRouter {
+					ViewInfo = PipeRouterInfo { Pos = { 219.333, 49.7879 } },
+				},
+				kvrRiveLink1 = Fuse.kvrRiveLink {
+					Inputs = {
+						Rive = Input { Value = "Projects:/Vox/S04/Title_001.riv", },
+						Time = Input {
+							SourceOp = "vNumberCompReqTime1",
+							Source = "Output",
+						},
+						Input = Input {
+							SourceOp = "PipeRouter3",
+							Source = "Output",
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 210.167, 15.4015 } },
+					Version = 500
+				}
+			},
+		}
+	},
+	ActiveTool = "RiveTitle001"
+}
