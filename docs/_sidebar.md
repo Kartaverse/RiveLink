@@ -1,11 +1,16 @@
 <!-- docs/_sidebar.md -->
 - [Home](/)
+- [Install RiveLink](install)
+- [Building Nodal Workflows](nodes)
+- [Edit Page Effects Templates](macros)
+- [Using Vonk Based Temporal Effects](vonk)
 - **Links**
   - [Kartaverse](https://github.com/kartaverse)
   - [Medium Blog](https://medium.com/@andrewhazelden)
   - [Google Group](https://groups.google.com/g/kartaverse/)
   - [Facebook Group](https://www.facebook.com/groups/kartavr)
   - [Reactor Docs](https://kartaverse.github.io/Reactor-Docs/#/reactor)
+  - [Vonk Ultra](https://gitlab.com/AndrewHazelden/Vonk)
 - **Contact**
   - [Email](mailto:andrew@andrewhazelden.com)
   - [GitHub](https://github.com/AndrewHazelden)
