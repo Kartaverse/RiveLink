@@ -2,7 +2,7 @@
 
 ![Logo](Images/icon-kartavr.png)
 
-# RiveLink
+# RiveLink for Fusion
 
 > Generate Rive.app based motion graphics in Fusion Studio
 
