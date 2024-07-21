@@ -4,6 +4,7 @@
 - [Building Nodal Workflows](nodes)
 - [Edit Page Effects Templates](macros)
 - [Using Vonk Based Temporal Effects](vonk)
+- [XR Motion Graphics](vp)
 - **Links**
   - [Kartaverse](https://github.com/kartaverse)
   - [Medium Blog](https://medium.com/@andrewhazelden)

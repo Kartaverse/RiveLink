@@ -1,16 +1,16 @@
 --[[--
-kvrRiveLink.fuse - v5.73 2024-07-21 02.21 PM
+kvrRiveLink.fuse - v5.73 2024-07-21 08.17 PM
 By Andrew Hazelden
 --]]--
 
-FuRegisterClass('kvrRiveLink', CT_SinkTool, {
-	REGS_Name = 'kvrRiveLink',
-	REGS_Category = 'Kartaverse\\KartaLink',
-	REGS_OpIconString = 'Rive',
-	REGS_OpDescription = 'Render Rive.app visuals in the Fusion nodegraph.',
-	REGS_Company = 'Andrew Hazelden',
-	REGS_URL = 'https://github.com/Kartaverse/RiveLink',
-	REGS_HelpTopic = 'https://github.com/Kartaverse/RiveLink',
+FuRegisterClass("kvrRiveLink", CT_SinkTool, {
+	REGS_Name = "kvrRiveLink",
+	REGS_Category = "Kartaverse\\KartaLink",
+	REGS_OpIconString = "Rive",
+	REGS_OpDescription = "Render Rive.app visuals in the Fusion nodegraph.",
+	REGS_Company = "Andrew Hazelden",
+	REGS_URL = "https://github.com/Kartaverse/RiveLink",
+	REGS_HelpTopic = "https://github.com/Kartaverse/RiveLink",
 	REGID_DataType = "Image",
 	REGID_InputDataType = "Image",
 
@@ -44,24 +44,24 @@ BrandLogo = [[
 edit_fuse = [[
 tool.ScriptEdit[fu.TIME_UNDEFINED] = 1
 tool.ScriptEdit[fu.TIME_UNDEFINED] = 0
-print('Edit Fuse')
+print("Edit Fuse")
 ]]
 
 reload_fuse = [[
 tool.ScriptReload[fu.TIME_UNDEFINED] = 1
 tool.ScriptReload[fu.TIME_UNDEFINED] = 0
-print('Reload Fuse')
+print("Reload Fuse")
 ]]
 
 function Create()
 	-- Remove the default "Controls" page from the Fuse GUI
-	self:RemoveControlPage('Controls')
+	self:RemoveControlPage("Controls")
 	-- Macro page
-	self:AddControlPage('Rive', {CTID_DIB_ID  = 'Icons.Tools.Tabs.Display'})
+	self:AddControlPage("Rive", {CTID_DIB_ID  = "Icons.Tools.Tabs.Display"})
 	-- Display the branding
-	InLabel = self:AddInput(BrandLogo, 'Label',{
-		LINKID_DataType = 'Text',
-		INPID_InputControl = 'LabelControl',
+	InLabel = self:AddInput(BrandLogo, "Label",{
+		LINKID_DataType = "Text",
+		INPID_InputControl = "LabelControl",
 		LBLC_MultiLine = true,
 		INP_External = false,
 		INP_Passive = true,
@@ -70,30 +70,30 @@ function Create()
 		IC_NoReset = true,
 	})
 	-- Open Rive.app Button
-	InOpenRive = self:AddInput('Open Rive.app', 'Open Rive', {
-		LINKID_DataType = 'Number',
-		INPID_InputControl = 'ButtonControl',
+	InOpenRive = self:AddInput("Open Rive.app", "Open Rive", {
+		LINKID_DataType = "Number",
+		INPID_InputControl = "ButtonControl",
 		INP_DoNotifyChanged = true,
 		INP_External = false,
 		INP_Default = 0.0,
 		ICD_Width = 1,
 		IC_ControlPage = -1,
 		BTNCS_Execute = [[
-platform = (FuPLATFORM_WINDOWS and 'Windows') or (FuPLATFORM_MAC and 'Mac') or (FuPLATFORM_LINUX and 'Linux')
+platform = (FuPLATFORM_WINDOWS and "Windows") or (FuPLATFORM_MAC and "Mac") or (FuPLATFORM_LINUX and "Linux")
 
-if platform == 'Mac' then
+if platform == "Mac" then
 	-- Running on Mac
-	local command = 'open -a "Rive.app" &'
+	local command = "open -a "Rive.app" &"
 	os.execute(command)
-	-- print('[Launch Command] ', command)
+	-- print("[Launch Command] ", command)
 else
-	print('[Error] Rice is not available for ' .. tostring(platform))
+	print("[Error] Rice is not available for " .. tostring(platform))
 	return
 end
 	]],
 		IC_Visible = true,
 		INP_Passive = true,
-		ICS_ControlPage = 'Rive',
+		ICS_ControlPage = "Rive",
 	})
 	self:BeginControlNest("Document", "DocumentControls", true, {})
 		InRive = self:AddInput("Rive File", "Rive", {
@@ -101,6 +101,7 @@ end
 			INPID_InputControl = "FileControl",
 			-- FC_IsSaver = true,
 			FCS_FilterString = "Rive (*.riv)|*.riv|All Files (*.*)|*.*|",
+			LINK_Main = 1,
 		})
 		InExpandPathMaps = self:AddInput("Expand PathMaps", "ExpandPathMaps", {
 			LINKID_DataType = "Number",
@@ -117,7 +118,7 @@ end
 			INP_Integer = true,
 			INP_Default = 1.0,
 			ICD_Width = 1,
-			ICS_ControlPage = 'Rive',
+			ICS_ControlPage = "Rive",
 		})
 	self:EndControlNest()
 	self:BeginControlNest("Interaction", "InteractionControls", true, {})
@@ -134,6 +135,7 @@ end
 			{MBTNC_AddButton = "MMB"},
 			{MBTNC_AddButton = "RMB"},
 			INP_DoNotifyChanged = true,
+			LINK_Main = 5,
 		})
 		InSeparator = self:AddInput("UISeparator1", "UISeparator1", {
 			IC_Visible = true,
@@ -151,6 +153,7 @@ end
 	--		PCD_OffsetY = 0.5,
 	--		INP_DefaultX = 0,
 	--		INP_DefaultY = 0,
+			LINK_Main = 4,
 			INP_DoNotifyChanged = true,
 		})
 		InAngle = self:AddInput("Angle", "Angle", {
@@ -165,6 +168,7 @@ end
 			ACID_Center = "Center",
 	--		ACID_Radius = "Zoom",
 	--		PC_GrabPriority = 1,
+			LINK_Main = 6,
 		})
 		InZoom = self:AddInput("Zoom", "Zoom",{
 			LINKID_DataType = "Number",
@@ -182,6 +186,7 @@ end
 			EC_GiveRadius = true,
 			PC_ControlGroup = 1.0,
 			PC_ControlID = 0,
+			LINK_Main = 7,
 		})
 	self:EndControlNest()
 	self:BeginControlNest("Time", "TimeControls", true, {})
@@ -196,7 +201,8 @@ end
 			{CCS_AddString = "Request Time"},
 			{CCS_AddString = "Time"},
 			CC_LabelPosition = "Vertical",
-			INP_DoNotifyChanged = true
+			INP_DoNotifyChanged = true,
+			LINK_Main = 2,
 		})
 		InTime = self:AddInput("Time", "Time", {
 			LINKID_DataType = "Number",
@@ -207,7 +213,7 @@ end
 			LINK_Main = 2
 		})
 	self:EndControlNest()
-	InShowInput = self:AddInput("Show Input", "ShowInput", {
+	InShowTimeInput = self:AddInput("Show Time Input", "ShowTimeInput", {
 		LINKID_DataType = "Number",
 		INPID_InputControl = "CheckboxControl",
 		INP_Integer = true,
@@ -215,41 +221,65 @@ end
 		INP_External = false,
 		INP_DoNotifyChanged = true
 	})
+	InShowImageInput = self:AddInput("Show Image Input", "ShowImageInput", {
+		LINKID_DataType = "Number",
+		INPID_InputControl = "CheckboxControl",
+		INP_Integer = true,
+		INP_Default = 0.0,
+		INP_External = false,
+		INP_DoNotifyChanged = true
+	})
+	InShowFileInput = self:AddInput("Show File Input", "ShowFileInput", {
+		LINKID_DataType = "Number",
+		INPID_InputControl = "CheckboxControl",
+		INP_Integer = true,
+		INP_Default = 0.0,
+		INP_External = false,
+		INP_DoNotifyChanged = true
+	})
+	InShowInteractionInput = self:AddInput("Show Interaction Input", "ShowInteractionInput", {
+		LINKID_DataType = "Number",
+		INPID_InputControl = "CheckboxControl",
+		INP_Integer = true,
+		INP_Default = 0.0,
+		INP_External = false,
+		INP_DoNotifyChanged = true
+	})
 	-- Common Page
-	BtnEditScript = self:AddInput('Edit Fuse', 'Edit_script',{
-		INPID_InputControl = 'ButtonControl',
+	BtnEditScript = self:AddInput("Edit Fuse", "Edit_script",{
+		INPID_InputControl = "ButtonControl",
 		INP_External = false,
 		IC_Visible = true,
 		BTNCS_Execute = edit_fuse,
-		ICS_ControlPage = 'Common',
+		ICS_ControlPage = "Common",
 		ICD_Width = 0.5,
 		INP_Passive = true,
 	})
-	BtnReloadFunction = self:AddInput('Reload Fuse', 'Reload_script',{
-		INPID_InputControl = 'ButtonControl',
+	BtnReloadFunction = self:AddInput("Reload Fuse", "Reload_script",{
+		INPID_InputControl = "ButtonControl",
 		INP_External = false,
 		IC_Visible = true,
 		BTNCS_Execute = reload_fuse,
-		ICS_ControlPage = 'Common',
+		ICS_ControlPage = "Common",
 		ICD_Width = 0.5,
 		INP_Passive = true,
 	})
-	InVerbose = self:AddInput('Verbose Logging', 'Verbose', {
-		LINKID_DataType = 'Number',
-		INPID_InputControl = 'CheckboxControl',
+	InVerbose = self:AddInput("Verbose Logging", "Verbose", {
+		LINKID_DataType = "Number",
+		INPID_InputControl = "CheckboxControl",
 		INP_DoNotifyChanged = true,
 		INP_Integer = true,
 		INP_Default = 0.0,
 		ICD_Width = 1,
 		INP_Passive = true,
-		ICS_ControlPage = 'Common',
+		ICS_ControlPage = "Common",
 	})
-	InImage = self:AddInput('Input', 'Input', {
-		LINKID_DataType = 'Image',
-		LINK_Main = 1,
+	InImage = self:AddInput("Input", "Input", {
+		LINKID_DataType = "Image",
+		LINK_Main = 3,
 	})
-	OutImage = self:AddOutput('Output', 'Output', {
-		LINKID_DataType = 'Image',
+	OutImage = self:AddOutput("Output", "Output", {
+		LINKID_DataType = "Image",
 		LINK_Main = 1,
 	})
 end
@@ -269,10 +299,25 @@ function NotifyChanged(inp, param, time)
 		:param time: Current frame number.
 		:type time: float
 	]]
-	if inp == InShowInput then
+	if inp == InShowTimeInput then
+		local visible
+		if param.Value == 1.0 then visible = true else visible = false end
+		-- InTime:SetAttrs({LINK_Visible = visible})
+	elseif inp == InShowImageInput then
 		local visible
 		if param.Value == 1.0 then visible = true else visible = false end
 		InImage:SetAttrs({LINK_Visible = visible})
+	elseif inp == InShowFileInput then
+		local visible
+		if param.Value == 1.0 then visible = true else visible = false end
+		InRive:SetAttrs({LINK_Visible = visible})
+	elseif inp == InShowInteractionInput then
+		local visible
+		if param.Value == 1.0 then visible = true else visible = false end
+		InCenter:SetAttrs({LINK_Visible = visible})
+		InClick:SetAttrs({LINK_Visible = visible})
+		InAngle:SetAttrs({LINK_Visible = visible})
+		InZoom:SetAttrs({LINK_Visible = visible})
 	end
 end
 
@@ -287,7 +332,7 @@ function Process(req)
 	local img = InImage:GetValue(req)
 
 	local currentFrame = req.Time
-	local date = os.date('%Y-%m-%d')
+	local date = os.date("%Y-%m-%d")
 
 	-- Get the current node name
 	local nodeName = self.Name
@@ -300,7 +345,7 @@ function Process(req)
 
 	if req:IsPreCalc() then
 		if verbose == 1 or verbose == true then
-			print('[RiveLink] [Precalc Pass]')
+			print("[RiveLink] [Precalc Pass]")
 		end
 
 		OutImage:Set(req, img)
@@ -311,18 +356,18 @@ function Process(req)
 	local interactive = InInteractive:GetValue(req).Value
 	if (interactive == 1 and req:IsInteractive()) or not req:IsInteractive() then
 		-- Check for a non nil string
-		if macro_name and macro_name ~= '' then
+		if macro_name and macro_name ~= "" then
 			if jit.os == "OSX" then
 				-- tbd
 			else
-				print('[RiveLink] [Warning] This fuse only runs on macOS!')
+				print("[RiveLink] [Warning] This fuse only runs on macOS!")
 			end
 		else
-			print('[RiveLink] [Warning] The Rive File field is empty!')
+			print("[RiveLink] [Warning] The Rive File field is empty!")
 		end
 	else
 		if verbose == 1 or verbose == true then
-			print('[RiveLink] [Interactive Rendering] Disabled')
+			print("[RiveLink] [Interactive Rendering] Disabled")
 		end
 	end
 
