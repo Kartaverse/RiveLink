@@ -21,11 +21,11 @@ Finally, with the arrival of the interactive RiveLink rendering technology, arti
 
 ![SVG Import](Images/fusion-svg-import.png)
 
-# Broad DCC Support
+# Broad DCC Support Planned
 
-The new Kartaverse RiveLink mograph toolset is being created with the goal of initially support Assimilate [Scratch](Assimilate Scratch/)/[LiveFX](https://www.assimilateinc.com/products/livefx/), BMD[Resolve](https://www.blackmagicdesign.com/products/davinciresolve)/[Fusion Studio](https://www.blackmagicdesign.com/products/fusion), and SideFX [Houdini Copernicus](https://www.sidefx.com/products/whats-new-in-h205/)  graphics software on Kartaverse 6's official launch day.
+The new Kartaverse RiveLink mograph toolset is being created with the goal of initially supporting Assimilate [Scratch](Assimilate Scratch/)/[LiveFX](https://www.assimilateinc.com/products/livefx/), BMD[Resolve](https://www.blackmagicdesign.com/products/davinciresolve)/[Fusion Studio](https://www.blackmagicdesign.com/products/fusion), and SideFX [Houdini Copernicus](https://www.sidefx.com/products/whats-new-in-h205/)  graphics software on Kartaverse 6's official launch day.
 
-## Assimilate LiveFX  Compatible
+## Assimilate LiveFX Compatible
 
 ![Assimilate LiveFX](Images/Icon-Assimilate.png)
 
