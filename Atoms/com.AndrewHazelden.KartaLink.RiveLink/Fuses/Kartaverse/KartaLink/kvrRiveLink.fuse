@@ -1,5 +1,5 @@
 --[[--
-kvrRiveLink.fuse - v5.73 2024-07-21 08.17 PM
+kvrRiveLink.fuse - v5.73 2024-07-21 08.32 PM
 By Andrew Hazelden
 --]]--
 
@@ -16,7 +16,7 @@ FuRegisterClass("kvrRiveLink", CT_SinkTool, {
 
 	-- Icon shown in the "Select Tool" dialog / Nodes View Tile Picture
 	REGS_IconID = "Icons.Tools.Icons.RunCommand",
-	
+
 	-- Should the current time setting be cached?
 	REG_TimeVariant = true,
 	REG_Unpredictable = true,
@@ -289,31 +289,35 @@ end
 function NotifyChanged(inp, param, time)
 	--[[
 		Handles all input control events.
-	
+
 		:param inp: Input that triggered a signal.
 		:type inp: Input
-	
+
 		:param param: Parameter object holding the (new) value.
 		:type param: Parameter
-	
+
 		:param time: Current frame number.
 		:type time: float
 	]]
 	if inp == InShowTimeInput then
 		local visible
 		if param.Value == 1.0 then visible = true else visible = false end
-		-- InTime:SetAttrs({LINK_Visible = visible})
+
+		InTime:SetAttrs({LINK_Visible = visible})
 	elseif inp == InShowImageInput then
 		local visible
 		if param.Value == 1.0 then visible = true else visible = false end
+
 		InImage:SetAttrs({LINK_Visible = visible})
 	elseif inp == InShowFileInput then
 		local visible
 		if param.Value == 1.0 then visible = true else visible = false end
+
 		InRive:SetAttrs({LINK_Visible = visible})
 	elseif inp == InShowInteractionInput then
 		local visible
 		if param.Value == 1.0 then visible = true else visible = false end
+
 		InCenter:SetAttrs({LINK_Visible = visible})
 		InClick:SetAttrs({LINK_Visible = visible})
 		InAngle:SetAttrs({LINK_Visible = visible})
@@ -356,7 +360,7 @@ function Process(req)
 	local interactive = InInteractive:GetValue(req).Value
 	if (interactive == 1 and req:IsInteractive()) or not req:IsInteractive() then
 		-- Check for a non nil string
-		if macro_name and macro_name ~= "" then
+		if rive_name and rive_name ~= "" then
 			if jit.os == "OSX" then
 				-- tbd
 			else
@@ -373,4 +377,3 @@ function Process(req)
 
 	OutImage:Set(req, img)
 end
-

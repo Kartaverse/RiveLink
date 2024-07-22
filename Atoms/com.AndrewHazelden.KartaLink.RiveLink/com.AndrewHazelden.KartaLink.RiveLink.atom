@@ -13,11 +13,14 @@ Atom {
 
 ]],
 	Deploy = {
-		"Comps/Kartaverse/KartaLink/RiveLink/Demo RiveLink.comp",
+		"Comps/Kartaverse/KartaLink/RiveLink/Demo RiveLink Essentials v001.comp",
+		"Comps/Kartaverse/KartaLink/RiveLink/Demo RiveLink Spatial v001.comp",
+		"Comps/Kartaverse/KartaLink/RiveLink/Media/PST-Pico-Tracker.csv",
 		"Docs/Kartaverse/KartaLink/RiveLink/Images/rivelink-screenshot.png",
 		"Docs/Kartaverse/KartaLink/RiveLink/Images/sample-node-graph.png",
 		"Docs/Kartaverse/KartaLink/RiveLink/README.html",
 		"Docs/Kartaverse/KartaLink/RiveLink/README.md",
 		"Fuses/Kartaverse/KartaLink/kvrRiveLink.fuse",
+		"Macros/Kartaverse/RiveLink/RiveTitle001.setting",
 	},
 }
