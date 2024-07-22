@@ -43,4 +43,4 @@ The new Kartaverse RiveLink mograph toolset is being created with the goal of in
 
 ![SideFX Houdini Icon](Images/Icon-Houdini.png)
 
-> `RiveLink for Houdini Indie` will be implemented as a Houdini 20.5+ Copernicus node. Houdini's TOPs (Task Operator) automation environment can be used to batch render RiveLink motion graphics quickly with the help of the HQueue Render Manager.
+> `RiveLink for Houdini Indie` will be implemented as a [Houdini](https://www.sidefx.com/products/whats-new-in-h205/) 20.5+ [Copernicus](https://www.sidefx.com/products/whats-new-in-h205/copernicus/) node. Additionally, Houdini's [TOPs](https://www.sidefx.com/docs/houdini/tops/intro.html) (Task Operator) nodes provide a powerful automation environment can be used to batch render RiveLink motion graphics quickly that are saved to disk using a [ROP image](https://www.sidefx.com/docs/houdini/nodes/cop/rop_image.html) node.
