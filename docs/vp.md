@@ -4,7 +4,9 @@
 
 The RiveLink integration plugin offers XR artists a toolset that allows 6DoF spatial content creators, and virtual production stages to rapidly generate beautiful XR focused motion graphics.
 
-With RiveLink and the Kartaverse [DCTL fuse nodes](https://kartaverse.github.io/Kartaverse-Docs/#/fuses) you can to insert your Rive ([.riv](https://rive.app/community/doc/format/docxcTF9lJxR)) formatted motion graphics visuals into an immersive scene, and attach the media to 6DoF compatible point tracking locators.
+With RiveLink and the Kartaverse [DCTL fuse nodes](https://kartaverse.github.io/Kartaverse-Docs/#/fuses) you can to insert a pair of left and right eye Rive ([.riv](https://rive.app/community/doc/format/docxcTF9lJxR)) formatted motion graphics visuals into an immersive scene, and attach the media to X/Y, 3DoF (rotation), or 6DoF (rotation and translation) compatible point tracking locators.
+
+![Spatial Video](Images/spatial-motion-graphics.png)
 
 ## 2.5D Matte Painting Workflows
 
