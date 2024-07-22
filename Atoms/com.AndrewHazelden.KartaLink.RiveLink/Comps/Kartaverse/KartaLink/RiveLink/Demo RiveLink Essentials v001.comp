@@ -1,8 +1,8 @@
 Composition {
 	CurrentTime = 1,
-	RenderRange = { 1, 144 },
+	RenderRange = { 1, 1 },
 	GlobalRange = { 1, 144 },
-	CurrentID = 19,
+	CurrentID = 25,
 	HiQ = true,
 	PlaybackUpdateMode = 0,
 	StereoMode = false,
@@ -18,18 +18,6 @@ Composition {
 		"Previews:/Rive.0000.exr"
 	},
 	Tools = {
-		RiveLink = Fuse.ptImage {
-			NameSet = true,
-			Inputs = {
-				ScriptVal = Input { Value = ScriptVal { }, },
-				Index = Input {
-					SourceOp = "vNumberCompReqTime1",
-					Source = "Output",
-				}
-			},
-			ViewInfo = OperatorInfo { Pos = { 220, -16.5 } },
-			Colors = { TileColor = { R = 0.266666666666667, G = 0.56078431372549, B = 0.396078431372549 }, }
-		},
 		Note1 = Note {
 			Inputs = {
 				Comments = Input { Value = "Kartaverse \"RiveLink\" unlocks the power of the Rive state machine inside an XR focused creation environment.", }
@@ -42,6 +30,32 @@ Composition {
 				Size = { 296.667, 46.8182 }
 			},
 			Colors = { TileColor = { R = 0.266666666666667, G = 0.56078431372549, B = 0.396078431372549 }, }
+		},
+		RiveLinkForFusion = Underlay {
+			CtrlWZoom = false,
+			NameSet = true,
+			ViewInfo = UnderlayInfo {
+				Pos = { 220, -115.5 },
+				Size = { 375.875, 148.407 }
+			},
+			Colors = { TileColor = { R = 0.266666666666667, G = 0.56078431372549, B = 0.396078431372549 }, }
+		},
+		vNumberCompReqTime1 = Fuse.vNumberCompReqTime {
+			ViewInfo = OperatorInfo { Pos = { 110, -16.5 } },
+			Colors = { TileColor = { R = 0.266666666666667, G = 0.56078431372549, B = 0.396078431372549 }, }
+		},
+		kvrRiveLink1 = Fuse.kvrRiveLink {
+			CtrlWZoom = false,
+			Inputs = {
+				Rive = Input { Value = "Comp:/Media/Title_001.riv", },
+				Time = Input {
+					SourceOp = "vNumberCompReqTime1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 220, -16.5 } },
+			Colors = { TileColor = { R = 0.266666666666667, G = 0.56078431372549, B = 0.396078431372549 }, },
+			Version = 500
 		},
 		Saver1 = Saver {
 			CtrlWZoom = false,
@@ -67,26 +81,12 @@ Composition {
 				OutputFormat = Input { Value = FuID { "OpenEXRFormat" }, },
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				Input = Input {
-					SourceOp = "RiveLink",
+					SourceOp = "kvrRiveLink1",
 					Source = "Output",
 				},
 				["OpenEXRFormat.ZipCompressionLevel"] = Input { Value = 4, }
 			},
 			ViewInfo = OperatorInfo { Pos = { 330, -16.5 } },
-			Colors = { TileColor = { R = 0.266666666666667, G = 0.56078431372549, B = 0.396078431372549 }, }
-		},
-		RiveLinkForFusion = Underlay {
-			CtrlWZoom = false,
-			NameSet = true,
-			ViewInfo = UnderlayInfo {
-				Pos = { 220, -115.5 },
-				Size = { 375.875, 148.407 }
-			},
-			Colors = { TileColor = { R = 0.266666666666667, G = 0.56078431372549, B = 0.396078431372549 }, }
-		},
-		vNumberCompReqTime1 = Fuse.vNumberCompReqTime {
-			CtrlWZoom = false,
-			ViewInfo = OperatorInfo { Pos = { 110, -16.5 } },
 			Colors = { TileColor = { R = 0.266666666666667, G = 0.56078431372549, B = 0.396078431372549 }, }
 		}
 	},
@@ -101,14 +101,14 @@ Composition {
 			Width = 1221,
 			Height = 735,
 			ZoneInfo = {
-				AuxRight = { Expanded = true },
+				["!Right"] = {
+				},
 				["!Left"] = {
 				},
 				AuxLeft = { Expanded = true },
 				Right = { Expanded = true, },
 				Left = { Expanded = false, },
-				["!Right"] = {
-				}
+				AuxRight = { Expanded = true }
 			},
 			ViewInfo = {
 				Viewer1 = { Show = true, RatioX = 1.00089047195013, RatioY = 0.01, MRU = 1, Adjust = false, },
@@ -127,20 +127,20 @@ Composition {
 				Time = { Show = true, RatioX = 100, },
 				InnerColumns = {
 					RatioX = 100,
-					RatioY = 0.941007194244604,
+					RatioY = 0.941007194244606,
 				},
 				Keyframes = { Show = false, },
 				LayoutStrip = { Show = true, RatioX = 100, },
 				Inspector = { Show = true, RatioY = 1, RatioX = 100, },
 				InnerRight = {
 				},
-				MediaPool = { Show = false, },
+				Clips = { Show = false, },
 				OuterColumns = {
 					RatioX = 100,
 					RatioY = 1,
 				},
 				Effects = { Show = false, Adjust = true, RatioY = 100, MRU = 0, RatioX = 1, },
-				ActionStrip = { Show = false, RatioX = 100, MRU = 0, Adjust = true, },
+				ActionStrip = { Show = false, Adjust = true, MRU = 0, RatioX = 100, },
 				Metadata = { Show = false, },
 				OuterLeft = {
 				},
@@ -150,10 +150,10 @@ Composition {
 				},
 				Nodes = { Show = true, RatioY = 100, RatioX = 1, },
 				OuterRight = {
-					PixelX = 420,
 					RatioY = 100,
+					PixelX = 420,
 				},
-				Clips = { Show = false, },
+				MediaPool = { Show = false, },
 				Spline = { Show = false, }
 			},
 			Views = ordered() {
@@ -351,11 +351,11 @@ Composition {
 						Viewer = {
 							EnableLUTs = false,
 							LUTPlugin = "FusionViewLUT",
-							NearZ = 0,
+							FitMarginY = 0,
 							FitMarginX = 0,
 							FitMarginType = 0,
 							FarZ = -1000,
-							FitMarginY = 0
+							NearZ = 0
 						}
 					},
 				},
@@ -368,18 +368,18 @@ Composition {
 						Viewer = {
 							EnableLUTs = false,
 							LUTPlugin = "FusionViewLUT",
-							NearZ = 0,
+							FitMarginY = 0,
 							FitMarginX = 0,
 							FitMarginType = 0,
 							FarZ = -1000,
-							FitMarginY = 0
+							NearZ = 0
 						}
 					},
 				},
 				View1 = {
 					PrevCtrlInactiveColor = 4278255360,
 					PickW = 1,
-					FullScreen = false,
+					PickH = 1,
 					SideB = {
 						PrevCtrlInactiveColor = 4278255360,
 						PickW = 1,
@@ -388,22 +388,22 @@ Composition {
 						Viewer = {
 							EnableLUTs = false,
 							LUTPlugin = "FusionViewLUT",
-							NearZ = 0,
+							FitMarginY = 0,
 							FitMarginX = 0,
 							FitMarginType = 0,
 							FarZ = -1000,
-							FitMarginY = 0
+							NearZ = 0
 						}
 					},
-					AlwaysOnTop = true,
 					PrevCtrlActiveColor = 4278190335,
-					PickH = 1
+					AlwaysOnTop = true,
+					FullScreen = false
 				},
 				View2 = {
 					PickH = 1,
+					PickW = 1,
 					AlwaysOnTop = true,
-					FullScreen = false,
-					PickW = 1
+					FullScreen = false
 				}
 			},
 			Paths = {
@@ -425,7 +425,7 @@ Composition {
 				RemoveRouters = false
 			},
 			QuickTime = {
-			},
+			}
 		}
 	},
 }

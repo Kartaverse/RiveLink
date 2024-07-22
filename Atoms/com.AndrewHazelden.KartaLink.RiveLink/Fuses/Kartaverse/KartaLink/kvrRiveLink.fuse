@@ -1,9 +1,23 @@
 --[[--
-kvrRiveLink.fuse - v5.73 2024-07-21 08.32 PM
-By Andrew Hazelden
+kvrRiveLink.fuse - v5.73 2024-07-21 10.41 PM
+By Andrew Hazelden (andrew@andrewhazelden.com)
+
+Overview
+---------
+Kartaverse "RiveLink" unlocks the power of the Rive state machine inside an XR focused creation environment.
+
+Open Source License
+-------------------
+	- LGPL v3
+
+DCTL Fuse Support Requirements
+------------------------------
+	- An OpenCL, CUDA, or Metal based GPU
+	- Fusion Studio 18-19+ or Resolve 18-19+
+
 --]]--
 
-FuRegisterClass("kvrRiveLink", CT_SinkTool, {
+FuRegisterClass("kvrRiveLink", CT_Tool, {
 	REGS_Name = "kvrRiveLink",
 	REGS_Category = "Kartaverse\\KartaLink",
 	REGS_OpIconString = "Rive",
@@ -137,12 +151,7 @@ end
 			INP_DoNotifyChanged = true,
 			LINK_Main = 5,
 		})
-		InSeparator = self:AddInput("UISeparator1", "UISeparator1", {
-			IC_Visible = true,
-			INPID_InputControl = "SeparatorControl",
-			INP_External = false,
-		})
-		InCenter = self:AddInput("Center", "Center", {
+		InCenter = self:AddInput("Mouse Center", "Center", {
 			LINKID_DataType = "Point",
 			INPID_InputControl = "OffsetControl",
 			INPID_PreviewControl = "CrosshairControl",
@@ -156,6 +165,8 @@ end
 			LINK_Main = 4,
 			INP_DoNotifyChanged = true,
 		})
+	self:EndControlNest()
+	self:BeginControlNest("Transform", "TransformControls", false, {})
 		InAngle = self:AddInput("Angle", "Angle", {
 			LINKID_DataType = "Number", 
 			INPID_InputControl = "ScrewControl",
@@ -189,11 +200,11 @@ end
 			LINK_Main = 7,
 		})
 	self:EndControlNest()
-	self:BeginControlNest("Time", "TimeControls", true, {})
+	self:BeginControlNest("Time", "TimeControls", false, {})
 		InTimeMode = self:AddInput("Time Mode", "TimeMode", {
 			LINKID_DataType = "Number",
 			INPID_InputControl = "ComboControl",
-			INP_Default = 3,
+			INP_Default = 2,
 			INP_Integer = true,
 			ICD_Width = 1,
 			{CCS_AddString = "Static Frame"},
@@ -202,7 +213,6 @@ end
 			{CCS_AddString = "Time"},
 			CC_LabelPosition = "Vertical",
 			INP_DoNotifyChanged = true,
-			LINK_Main = 2,
 		})
 		InTime = self:AddInput("Time", "Time", {
 			LINKID_DataType = "Number",
@@ -210,41 +220,92 @@ end
 			INP_MinScale = 0.0,
 			INP_MaxScale = 100.0,
 			INP_Default = 0.0,
-			LINK_Main = 2
+			LINK_Main = 2,
 		})
 	self:EndControlNest()
-	InShowTimeInput = self:AddInput("Show Time Input", "ShowTimeInput", {
-		LINKID_DataType = "Number",
-		INPID_InputControl = "CheckboxControl",
-		INP_Integer = true,
-		INP_Default = 1.0,
-		INP_External = false,
-		INP_DoNotifyChanged = true
-	})
-	InShowImageInput = self:AddInput("Show Image Input", "ShowImageInput", {
-		LINKID_DataType = "Number",
-		INPID_InputControl = "CheckboxControl",
-		INP_Integer = true,
-		INP_Default = 0.0,
-		INP_External = false,
-		INP_DoNotifyChanged = true
-	})
-	InShowFileInput = self:AddInput("Show File Input", "ShowFileInput", {
-		LINKID_DataType = "Number",
-		INPID_InputControl = "CheckboxControl",
-		INP_Integer = true,
-		INP_Default = 0.0,
-		INP_External = false,
-		INP_DoNotifyChanged = true
-	})
-	InShowInteractionInput = self:AddInput("Show Interaction Input", "ShowInteractionInput", {
-		LINKID_DataType = "Number",
-		INPID_InputControl = "CheckboxControl",
-		INP_Integer = true,
-		INP_Default = 0.0,
-		INP_External = false,
-		INP_DoNotifyChanged = true
-	})
+	self:BeginControlNest("Image", "ImageNest", false, {})
+		InAutoResolution = self:AddInput("Auto Resolution", "AutoResolution", {
+			LINKID_DataType = "Number",
+			INPID_InputControl = "CheckboxControl",
+			INP_DoNotifyChanged = true,
+			INP_Default = 1.0,
+			INP_Integer = true,
+			ICD_Width = 1,
+		})
+		InWidth = self:AddInput("Width", "Width", {
+			LINKID_DataType = "Number",
+			INPID_InputControl = "SliderControl",
+			INP_MinScale = 1,
+			INP_MaxScale = 16,384,
+			INP_Default = 3840,
+			INP_Integer = true,
+		})
+		InHeight = self:AddInput("Height", "Height", {
+			LINKID_DataType = "Number",
+			INPID_InputControl = "SliderControl",
+			INP_MinScale = 1,
+			INP_MaxScale = 16384,
+			INP_Default = 2160,
+			INP_Integer = true,
+		})
+		InSeparator = self:AddInput("UISeparator1", "UISeparator1", {
+			IC_Visible = true,
+			INPID_InputControl = "SeparatorControl",
+			INP_External = false,
+		})
+		InFlipVertical = self:AddInput("Flip Vertical", "FlipVertical", {
+			LINKID_DataType = "Number",
+			INPID_InputControl = "CheckboxControl",
+			INP_Default = 0,
+		})
+		InFlipHorizontal = self:AddInput("Flip Horizontal", "FlipHorizontal", {
+			LINKID_DataType = "Number",
+			INPID_InputControl = "CheckboxControl",
+			INP_Default = 0,
+		})
+	self:EndControlNest()
+	self:BeginControlNest("Input Connections", "InputConnectionsNest", false, {})
+		InShowTimeInput = self:AddInput("Show Time Input", "ShowTimeInput", {
+			LINKID_DataType = "Number",
+			INPID_InputControl = "CheckboxControl",
+			INP_Integer = true,
+			INP_Default = 1.0,
+			INP_External = false,
+			INP_DoNotifyChanged = true
+		})
+		InShowImageInput = self:AddInput("Show Image Input", "ShowImageInput", {
+			LINKID_DataType = "Number",
+			INPID_InputControl = "CheckboxControl",
+			INP_Integer = true,
+			INP_Default = 0.0,
+			INP_External = false,
+			INP_DoNotifyChanged = true
+		})
+		InShowFileInput = self:AddInput("Show File Input", "ShowFileInput", {
+			LINKID_DataType = "Number",
+			INPID_InputControl = "CheckboxControl",
+			INP_Integer = true,
+			INP_Default = 0.0,
+			INP_External = false,
+			INP_DoNotifyChanged = true
+		})
+		InShowMouseInput = self:AddInput("Show Mouse Input", "ShowMouseInput", {
+			LINKID_DataType = "Number",
+			INPID_InputControl = "CheckboxControl",
+			INP_Integer = true,
+			INP_Default = 0.0,
+			INP_External = false,
+			INP_DoNotifyChanged = true
+		})
+		InShowTransformInput = self:AddInput("Show Transform Input", "ShowTransformInput", {
+			LINKID_DataType = "Number",
+			INPID_InputControl = "CheckboxControl",
+			INP_Integer = true,
+			INP_Default = 0.0,
+			INP_External = false,
+			INP_DoNotifyChanged = true
+		})
+	self:EndControlNest()
 	-- Common Page
 	BtnEditScript = self:AddInput("Edit Fuse", "Edit_script",{
 		INPID_InputControl = "ButtonControl",
@@ -314,12 +375,15 @@ function NotifyChanged(inp, param, time)
 		if param.Value == 1.0 then visible = true else visible = false end
 
 		InRive:SetAttrs({LINK_Visible = visible})
-	elseif inp == InShowInteractionInput then
+	elseif inp == InShowMouseInput then
 		local visible
 		if param.Value == 1.0 then visible = true else visible = false end
 
 		InCenter:SetAttrs({LINK_Visible = visible})
 		InClick:SetAttrs({LINK_Visible = visible})
+	elseif inp == InShowTransformInput then
+		local visible
+		if param.Value == 1.0 then visible = true else visible = false end
 		InAngle:SetAttrs({LINK_Visible = visible})
 		InZoom:SetAttrs({LINK_Visible = visible})
 	end
