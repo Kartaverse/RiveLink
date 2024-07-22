@@ -5,7 +5,7 @@
 
 Using the RiveLink toolset is as easy as adding a new "kvrRiveLink" node to your comp. 
 
-> On macOS you can display the Fusion page's "Select Tool" dialog by pressing the Shift+Space hotkey.
+> The Fusion page's "Select Tool" dialog is displayed by pressing the Shift+Space (macOS) or Control+Space (Windows/Linux) hotkey combination.
 
 ![Select Tool](Images/rivelink-select-tool.png)
 
