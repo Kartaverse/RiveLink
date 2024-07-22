@@ -27,13 +27,3 @@ If your VP stage supports Brompton-style "[Frame Remapping](https://www.brompton
 This multi-view rendering support allows stereoscopic 3D motion graphics to happen on a VP stage, all you need is Frame Remapping and to have a Beamsplitter rig attached to your production cameras.
 
 ![Beamsplitter](Images/xr-3dality-beamsplitter.webp)
-
-## Broad DCC Support
-
-The new Kartaverse RiveLink mograph toolset is being created with the goal of initially support Assimilate Scratch/[LiveFX](https://www.assimilateinc.com/products/livefx/), [BMD Resolve](https://www.blackmagicdesign.com/products/davinciresolve)/[Fusion Studio](https://www.blackmagicdesign.com/products/fusion), and [SideFX Houdini's](https://www.sidefx.com/products/whats-new-in-h205/) Copernicus graphics software on Kartaverse 6's official launch day.
-
-> `RiveLink for Fusion` is built as a fuse that connects directly to the official [Rive-CPP](https://github.com/rive-app/rive-cpp) library, using the fuse API and its [LuaJIT FFI](https://luajit.org/ext_ffi.html) interface.
-
-> `RiveLink for LiveFX` will be implemented as a native Assimilate Scratch [SPA plugin](https://www.assimilatesupport.com/akb/KnowledgebaseArticle50984.aspx) so it can deeply integrate its core functionality so it plays a role in a realtime rendered LiveFX VP session. 
-
-> (Special thanks need go out to Mazze Aderhold and Jeff at Assimilate for their support of the Kartaverse project with Assimilate NFR licenses to help with development. It is greatly appreciated!)
