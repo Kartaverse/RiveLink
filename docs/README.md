@@ -1,6 +1,7 @@
 # RiveLink (WIP)
 
-> The ultimate XR motion graphics solution for Fusioneers  
+> The ultimate XR motion graphics solution for Fusioneers
+>
 > Enjoy!
 >
 
