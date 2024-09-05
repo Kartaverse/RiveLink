@@ -44,3 +44,7 @@ The new Kartaverse RiveLink mograph toolset is being created with the goal of in
 ![SideFX Houdini Icon](Images/Icon-Houdini.png)
 
 > `RiveLink for Houdini Indie` will be implemented as a [Houdini](https://www.sidefx.com/products/whats-new-in-h205/) 20.5+ [Copernicus](https://www.sidefx.com/products/whats-new-in-h205/copernicus/) node. Additionally, Houdini's [TOPs](https://www.sidefx.com/docs/houdini/tops/intro.html) (Task Operator) nodes provide a powerful automation environment can be used to batch render RiveLink motion graphics quickly that are saved to disk using a [ROP image](https://www.sidefx.com/docs/houdini/nodes/cop/rop_image.html) node.
+
+---
+
+Rive is a trademark of Rive, Inc. All other trademarks, logos, and brand names are the property of their respective owners.  
