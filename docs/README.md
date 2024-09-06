@@ -7,7 +7,7 @@
 
 Welcome to the development repo for "RiveLink" — a [Rive.app](https://rive.app/) integration plugin for BMD Resolve/Fusion. 
 
-- The integration plugin was made in West Dover, Nova Scotia, Canada 🇨🇦
+- Made in West Dover, Nova Scotia, Canada 🇨🇦
 
 # Overview
 
